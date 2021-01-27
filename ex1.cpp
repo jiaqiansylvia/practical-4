@@ -38,17 +38,7 @@ double poli_value(double * p, int d, double x)
   return val;
 }
 
-//get the biggest degree of these two polynomials
-int biggest_poly(int d1, int d2)
-{
-  if(d1 > d2)
-    return d1;
-  else
-    return d2;
-}
-
 //calculate the sum of these two polynomials
-//
 double * poli_sum (double * p1, int d1, double * p2, int d2, int &dr) {
   double * sum_poli = new double[dr];
 
@@ -65,7 +55,7 @@ double * poli_sum (double * p1, int d1, double * p2, int d2, int &dr) {
   return sum_poli;
 }
 
-//
+//calculate the product of these two polynomials
 double * poli_product (double * p1, int d1, double * p2, int d2, int & dr){
   double * product_poli = new double[dr];
   for(int i = 0; i <= d1; i++)
@@ -76,8 +66,6 @@ double * poli_product (double * p1, int d1, double * p2, int d2, int & dr){
   print_poly(product_poli, dr);
   return product_poli;
 }
-
-
 
 int main()
 {
@@ -92,18 +80,16 @@ int main()
 
   cout << "x:";
   cin >> x;
-  cout<<x<<"&"<<p1<<";"<<d1<<"/"<<endl;
-  v1 = poli_value(p1, d1, x);
-  v2 = poli_value(p2, d2, x);
-  cout << "the vaules of these two polynomials are: "<< v1 << " and " << v2 << endl;
 
-  //int degree_result_sum//dr = biggest_poly(g1, g2);
-  dr = biggest_poly(g1, g2);
- // int degree_result_prod = g1+g2;
+  v1 = poli_value(p1, g1, x);
+  v2 = poli_value(p2, g2, x);
+  cout << "the vaules of these two polynomials are: "<< v1 << " and " << v2 << endl;
   
-  dr_sum = biggest_poly(g1, g2);
+  dr_sum = max(g1, g2);
   dr_product = g1+g2;
+  cout<<"the sum of two polynomials is: ";
   sum = poli_sum(p1, g1, p2, g2, dr_sum);
+  cout<<"the product of two polynomials is: ";
   product = poli_product(p1, g1, p2, g2, dr_product);
 
   delete[] p1;
